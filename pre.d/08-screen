@@ -1,0 +1,15 @@
+#/bin/sh
+#
+# Copyright 2020 Daniel Leidert <daniel.leidert@wgdd.de>
+
+set -e
+
+debdir=$(mktemp -d)
+
+wget -O screen.deb -P ${debdir} http://snapshot.debian.org/archive/debian/20150907T042834Z/pool/main/s/screen/screen_4.1.0~20120320gitdb59704-7%2Bdeb7u1_`dpkg --print-architecture`.deb
+
+dpkg -i ${debdir}/screen.deb
+
+rm -rf ${debdir}
+
+exit 0
