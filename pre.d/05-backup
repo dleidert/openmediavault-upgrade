@@ -1,0 +1,15 @@
+#/bin/sh
+#
+# Copyright 2020 Daniel Leidert <daniel.leidert@wgdd.de>
+
+set -e
+
+THIS_BACKUP_DIR=${THIS_BACKUP_DIR:-"/var/backups/system/local.wheezy/"}
+
+[ -d THIS_BACKUP_DIR ] && exit 1
+
+mkdir -p ${THIS_BACKUP_DIR}
+
+cp -ar --parents /etc /var/lib/dpkg /var/lib/apt/extended_states /var/cache/openmediavault/ ${THIS_BACKUP_DIR}
+
+exit 0
