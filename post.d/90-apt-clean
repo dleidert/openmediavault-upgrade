@@ -21,6 +21,6 @@
 
 set -e
 
-apt-get clean
+apt-get autoclean
 
 exit 0
