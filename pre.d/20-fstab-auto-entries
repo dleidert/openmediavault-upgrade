@@ -27,18 +27,18 @@ do
   awk -i inplace -v t=$t -F '[[:space:]]+' '($2 == t) && ($4 ~ /auto/) {$4 = $4",nofail"; print $0; next} 1' ${THIS_FSTAB}.new
 done
 
-whiptail --clear --scrolltext \
-  --backtitle "Writing proposed changes to ${THIS_FSTAB}" \
-  --title "Writing /etc/fstab" \
-  --yesno "Do you want to write these changes to ${THIS_FSTAB}?\n\n$(diff -puN ${THIS_FSTAB} ${THIS_FSTAB}.new)" \
-  20 80
-
-if [ $? -ne 0 ]
-then
-  rm -f ${THIS_FSTAB}.new
-  echo "Make sure that all auto-mount targets will be available during reboot."
-  exit 0
-fi
+#whiptail --clear --scrolltext \
+#  --backtitle "Writing proposed changes to ${THIS_FSTAB}" \
+#  --title "Writing /etc/fstab" \
+#  --yesno "Do you want to write these changes to ${THIS_FSTAB}?\n\n$(diff -puN ${THIS_FSTAB} ${THIS_FSTAB}.new)" \
+#  20 80
+#
+#if [ $? -ne 0 ]
+#then
+#  rm -f ${THIS_FSTAB}.new
+#  echo "Make sure that all auto-mount targets will be available during reboot."
+#  exit 0
+#fi
 
 echo "Writing the proposed changes to ${THIS_FSTAB}"
 
