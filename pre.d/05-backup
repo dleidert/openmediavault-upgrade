@@ -4,7 +4,7 @@
 
 set -e
 
-THIS_BACKUP_DIR=${THIS_BACKUP_DIR:-"/var/backups/system/local.wheezy/"}
+. $(dirname $(readlink -f "$0"))/../inc/localvars
 
 mkdir -p ${THIS_BACKUP_DIR}
 

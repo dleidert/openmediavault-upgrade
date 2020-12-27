@@ -4,9 +4,9 @@
 #
 # https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#systemd-auto-mounts-incompat
 
-THIS_FSTAB=${THIS_FSTAB:-"/etc/fstab"}
-
 set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
 
 echo -n "Looking for auto-mount targets lacking the nofail option... "
 
