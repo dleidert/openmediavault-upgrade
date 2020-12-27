@@ -25,7 +25,7 @@ wget
 
 echo "${PACKAGES}" | while read line
 do
-	apt-get upgrade ${THIS_APT_UPGRADE_OPTIONS} || apt-get install -f
+	apt-get upgrade ${THIS_APT_UPGRADE_OPTIONS} ${line} || apt-get install -f
 done
 
 exit 0
