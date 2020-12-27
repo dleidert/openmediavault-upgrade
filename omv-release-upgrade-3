@@ -2,14 +2,14 @@
 
 set -e
 
-(
-
 THIS_SCRIPT=$(readlink -f "$0")
 THIS_PATH=$(dirname "$THIS_SCRIPT")
 THIS_PATH=${THIS_PATH=:-"."}
 
 . ${THIS_PATH}/inc/envvars
 . ${THIS_PATH}/inc/localvars
+
+(
 
 run-parts -v --exit-on-error ${THIS_PATH}/pre.d
 run-parts -v --exit-on-error ${THIS_PATH}/run.d
