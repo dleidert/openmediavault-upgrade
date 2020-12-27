@@ -24,7 +24,8 @@ cp -a ${THIS_FSTAB} ${THIS_FSTAB}.new
 
 for t in $targets
 do
-  awk -i inplace -v t=$t -F '[[:space:]]+' '($2 == t) && ($4 ~ /auto/) {$4 = $4",nofail"; print $0; next} 1' ${THIS_FSTAB}.new
+  awk -v t=$t -F '[[:space:]]+' '($2 == t) && ($4 ~ /auto/) {$4 = $4",nofail"; print $0; next} 1' ${THIS_FSTAB}.new > ${THIS_FSTAB}.fix
+  mv ${THIS_FSTAB}.fix ${THIS_FSTAB}.new
 done
 
 #whiptail --clear --scrolltext \
@@ -41,6 +42,8 @@ done
 #fi
 
 echo "Writing the proposed changes to ${THIS_FSTAB}"
+
+echo "$(diff -puN ${THIS_FSTAB} ${THIS_FSTAB}.new)"
 
 mv ${THIS_FSTAB} ${THIS_FSTAB}.bak
 mv ${THIS_FSTAB}.new ${THIS_FSTAB}
