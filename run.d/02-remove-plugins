@@ -1,0 +1,25 @@
+#!/bin/sh
+
+PLUGINS="
+openmediavault-clamav
+openmediavault-forkeddaapd
+openmediavault-iscsitarget
+openmediavault-ldap
+openmediavault-lvm2
+openmediavault-netatalk
+openmediavault-nut
+openmediavault-owncloud
+openmediavault-route
+openmediavault-shairport
+openmediavault-usbbackup
+"
+
+set -e
+
+apt-get autoremove --purge --yes ${PLUGINS}
+
+remain="$(dpkg -l | grep ^ii | grep apache | awk -F '[[:space:]]+' '{print $2}' | grep -ve "^\(apache2\|apache2-data\)$")"
+
+apt-get autoremove --purge --yes ${remain}
+
+exit 0
