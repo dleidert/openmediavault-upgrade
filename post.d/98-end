@@ -1,0 +1,10 @@
+#/bin/bash
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/omvvars
+
+echo "Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
+echo "Please restart your system now."
+
+exit 0
