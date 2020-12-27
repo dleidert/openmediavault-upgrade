@@ -11,6 +11,7 @@ openmediavault-nut
 openmediavault-owncloud
 openmediavault-route
 openmediavault-shairport
+openmediavault-tftp
 openmediavault-usbbackup
 "
 
@@ -18,7 +19,7 @@ set -e
 
 apt-get autoremove --purge --yes ${PLUGINS}
 
-remain="$(dpkg -l | grep ^ii | grep apache | awk -F '[[:space:]]+' '{print $2}' | grep -ve "^\(apache2\|apache2-data\)$")"
+remain="$(dpkg -l | grep ^ii | awk '{print $2}' | grep openmediavault | grep -ve "^\(openmediavault\|openmediavault-keyring\)$")"
 
 apt-get autoremove --purge --yes ${remain}
 
