@@ -1,0 +1,9 @@
+# . $(dirname $(readlink -f "$0"))/../inc/omvvars
+
+. /etc/default/openmediavault
+
+OMV_CONFIG_BACKUP_FILE=${OMV_CONFIG_BACKUP_FILE:-"${OMV_CONFIG_FILE}.2x.bak"}
+OMV_DPKGARCHIVE_DIR=${OMV_DPKGARCHIVE_DIR:-"/var/cache/openmediavault/archives"}
+OMV_UPGRADE_APTSOURCESLIST=${OMV_UPGRADE_APTSOURCESLIST:-"/etc/apt/sources.list.d/openmediavault.list"}
+OMV_UPGRADE_RELEASENAME=${OMV_UPGRADE_RELEASENAME:-"Erasmus"}
+OMV_UPGRADE_RELEASEVERSION=${OMV_UPGRADE_RELEASEVERSION:-"3.0"}
