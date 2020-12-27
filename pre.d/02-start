@@ -7,6 +7,10 @@ set -e
 OMV_UPGRADE_RELEASEVERSION=${OMV_UPGRADE_RELEASEVERSION:-"3.0"}
 OMV_UPGRADE_RELEASENAME=${OMV_UPGRADE_RELEASENAME:-"Erasmus"}
 
-echo "Upgrading system to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
+cat << EOF
+******************************************************************************
+Upgrading system to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ...
+******************************************************************************
+EOF
 
 exit 0

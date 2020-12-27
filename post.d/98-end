@@ -4,12 +4,19 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/omvvars
 
-echo "Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
-echo
-echo "Make sure to clear your browser cache before using the new wb GUI!!"
-echo "Otherwise you might see this error:"
-echo "        missing 'required' attribute 'enabled'"
-echo
-echo "Please restart your system now."
+cat << EOF
+******************************************************************************
+Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
+
+Make sure to clear your browser cache before reloading the web GUI!!
+
+Otherwise you might see this error:
+
+        missing 'required' attribute 'enabled'
+
+
+Please restart your system now.
+******************************************************************************
+EOF
 
 exit 0
