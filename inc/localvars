@@ -6,3 +6,4 @@ THIS_BACKUP_DIR=${THIS_BACKUP_DIR:-"/var/backups/system/local.wheezy/"}
 THIS_FSTAB=${THIS_FSTAB:-"/etc/fstab"}
 THIS_DEBIAN_CODENAME=${THIS_DEBIAN_CODENAME:-"jessie"}
 THIS_DEBIAN_OLD_CODENAME=${THIS_DEBIAN_OLD_CODENAME:"wheezy"}
+THIS_HOST_ARCH=${THIS_HOST_ARCH:-"$(dpkg --print-architecture)"}
