@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/envvars
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+apt-get update ${THIS_APT_UPDATE_OPTIONS}
+
+exit 0

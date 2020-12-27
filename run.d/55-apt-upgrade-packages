@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/envvars
+
+PACKAGES="
+amd64-microcode intel-microcode
+base-passwd passwd
+bind9-host
+bsdutils
+fontconfig
+ifenslave-2.6 iputils-ping iproute iptables isc-dhcp-client isc-dhcp-common
+libcairo2
+libsasl2-2
+parted
+procps
+proftpd-basic proftpd-mod-vroot
+python3 python3-apt
+rrdcached
+samba
+wget
+"
+
+echo "${PACKAGES}" | while read line
+do
+	apt-get upgrade ${THIS_APT_UPGRADE_OPTIONS} || apt-get install -f
+done
+
+exit 0
