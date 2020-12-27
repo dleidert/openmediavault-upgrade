@@ -4,6 +4,7 @@ set -e
 
 SERVICES="
 php5-fpm
+rsync
 ssh
 "
 

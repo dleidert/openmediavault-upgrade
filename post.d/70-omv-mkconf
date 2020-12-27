@@ -5,6 +5,7 @@ set -e
 MODULES="
 apt
 issue
+rsyncd
 ssh
 timezone
 "
