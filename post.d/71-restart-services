@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+SERVICES="
+php5-fpm
+ssh
+"
+
+ssh-keygen -A
+
+for s in ${SERVICE}
+do
+	service $s restart
+done
+
+exit 0
