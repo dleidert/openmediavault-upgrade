@@ -16,7 +16,7 @@ if test -z "${targets}"
 then
 	echo "none"
 else
-	#echo "${targets}"
+	echo "${targets}"
 	cp -a ${THIS_FSTAB} ${THIS_FSTAB}.new
 	for t in $targets
 	do
