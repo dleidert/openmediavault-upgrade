@@ -10,7 +10,7 @@ set -e
 
 echo -n "Looking for auto-mount targets lacking the nofail option... "
 
-targets="$(findmnt -F ${THIS_FSTAB} -O +auto -i -O +nofail --output TARGET -n --raw)" || true
+targets="$(findmnt -s -O +auto -i -O +nofail --output TARGET -n --raw)" || true
 
 if test -z "${targets}"
 then
