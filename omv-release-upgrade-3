@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 THIS_SCRIPT=$(readlink -f "$0")
 THIS_PATH=$(dirname "$THISSCRIPT")
