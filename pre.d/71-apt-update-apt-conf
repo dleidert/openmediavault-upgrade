@@ -5,8 +5,8 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-defrel=$(grep -lre "^APT::Default-Release" ${THIS_APT_APT_CONF}*)
-if [ -f ${defrel} ]
+defrel="$(grep -lre "^APT::Default-Release" ${THIS_APT_APT_CONF}* || true)"
+if [ -f "${defrel}" ]
 then
 	sed -i -e "/^APT::Default-Release/ c APT::Default-Release \"${THIS_DEBIAN_CODENAME}\"" ${defrel}
 else
