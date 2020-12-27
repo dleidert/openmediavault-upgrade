@@ -25,7 +25,7 @@ samba
 vim-tiny
 wget
 xfsprogs
-xzutils
+xz-utils
 "
 
 echo "${PACKAGES}" | while read line
