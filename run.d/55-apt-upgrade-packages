@@ -7,9 +7,11 @@ set -e
 
 PACKAGES="
 amd64-microcode intel-microcode
+apt apt-utils
 base-passwd passwd
 bind9-host
-bsdutils
+bsd-mailx bsdmainutils bsdutils
+collectd collectd-core rrdtool
 fontconfig
 ifenslave-2.6 iputils-ping iproute iptables isc-dhcp-client isc-dhcp-common
 libcairo2
@@ -20,7 +22,10 @@ proftpd-basic proftpd-mod-vroot
 python3 python3-apt
 rrdcached
 samba
+vim-tiny
 wget
+xfsprogs
+xzutils
 "
 
 echo "${PACKAGES}" | while read line
