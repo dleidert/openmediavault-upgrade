@@ -8,7 +8,7 @@ set -e
 defrel="$(grep -lre "^APT::Default-Release" ${THIS_APT_APT_CONF}* || true)"
 if [ -f "${defrel}" ]
 then
-	sed -i -e "/^APT::Default-Release/ c APT::Default-Release \"${THIS_DEBIAN_CODENAME}\"" ${defrel}
+	sed -i -e "/^APT::Default-Release/ c APT::Default-Release \"${THIS_DEBIAN_CODENAME}\";" ${defrel}
 else
 	cat <<EOF >> ${THIS_APT_APT_CONF}
 APT::Default-Release "${THIS_DEBIAN_CODENAME}";
