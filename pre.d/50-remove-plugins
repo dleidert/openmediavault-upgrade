@@ -11,7 +11,6 @@ openmediavault-nut
 openmediavault-owncloud
 openmediavault-route
 openmediavault-shairport
-openmediavault-tftp
 openmediavault-usbbackup
 "
 
@@ -19,8 +18,13 @@ set -e
 
 apt-get autoremove --purge --yes ${PLUGINS}
 
+set +e
 remain="$(dpkg -l | grep ^ii | awk '{print $2}' | grep openmediavault | grep -ve "^\(openmediavault\|openmediavault-keyring\)$")"
+set -e
 
-apt-get autoremove --purge --yes ${remain}
+if [ -n "${remain}" ]
+then
+	apt-get autoremove --purge --yes ${remain}
+fi
 
 exit 0
