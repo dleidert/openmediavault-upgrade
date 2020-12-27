@@ -3,6 +3,7 @@
 set -e
 
 SERVICES="
+ntp
 php5-fpm
 rsync
 ssh
