@@ -3,5 +3,6 @@
 set -e
 
 apt-get install ${THIS_APT_INSTALL_OPTIONS} plymouth console-setup
+apt-get install ${THIS_APT_INSTALL_OPTIONS} linux-image-4.9-`dpkg --print-architecture`
 
 exit 0
