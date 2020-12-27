@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+# keep nobody's shell
+shell=$(grep nobody /etc/passwd | awk -F ':' '{print $7}' | tr '/' '_')
+echo 'base-passwd base-passwd/system/nobody/shell/${shell}/_usr_sbin_nologin boolean false' | debconf-set-selections
+
+# if PermitRootLogin is not set or not disabled keep it
+permit=$(grep -e ^PermitRootLogin /etc/ssh/sshd_config | awk '{print $2}')
+if [ -z "${permit}" -o "x${permit}" != "xno" ]
+then
+	echo 'openssh-server openssh-server/permit-root-login boolean false' | debconf-set-selections
+fi
+
+# don't restart services without asking
+# echo 'libc6 libraries/restart-without-asking boolean false' | debconf-set-selections
+
+exit 0

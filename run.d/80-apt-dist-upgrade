@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+apt-get dist-upgrade ${THIS_APT_UPGRADE_OPTIONS} || apt-get install -f
+
+exit 0

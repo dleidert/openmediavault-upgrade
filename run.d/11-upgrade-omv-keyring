@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/envvars
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+apt-get upgrade openmediavault-keyring ${THIS_APT_UPGRADE_OPTIONS} --allow-unauthenticated
+
+exit 0
