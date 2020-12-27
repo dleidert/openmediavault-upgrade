@@ -3,7 +3,7 @@
 THIS_APT_APT_CONF=${THIS_APT_APT_CONF:-"/etc/apt/apt.conf"}
 THIS_APT_INSTALL_OPTIONS=${THIS_APT_INSTALL_OPTIONS:-"-y --no-install-recommends --no-install-suggests"}
 THIS_APT_UPDATE_OPTIONS=${THIS_APT_UPDATE_OPTIONS:-""}
-THIS_APT_UPGRADE_OPTIONS=${THIS_APT_UPGRADE_OPTIONS:-"${THIS_APT_INSTALL_OPTIONS} -u -o Dpkg::Options::='--force-confdef' -o DPkg::Options::='--force-confold'"}
+THIS_APT_UPGRADE_OPTIONS=${THIS_APT_UPGRADE_OPTIONS:-"${THIS_APT_INSTALL_OPTIONS} -u -o Dpkg::Options::=--force-confdef -o DPkg::Options::=--force-confold"}
 THIS_APT_SOURCES_LIST=${THIS_APT_SOURCES_LIST:-"/etc/apt/sources.list"}
 THIS_BACKUP_DIR=${THIS_BACKUP_DIR:-"/var/backups/system/local.wheezy/"}
 THIS_FSTAB=${THIS_FSTAB:-"/etc/fstab"}
