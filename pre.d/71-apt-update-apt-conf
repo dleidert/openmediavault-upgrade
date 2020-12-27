@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+defrel=$(grep -lre "^APT::Default-Release" ${THIS_APT_APT_CONF}*)
+if [ -f ${defrel} ]
+then
+	sed -i -e "/^APT::Default-Release/ c APT::Default-Release \"${THIS_DEBIAN_CODENAME}\"" ${defrel}
+else
+	cat <<EOF >> ${THIS_APT_APT_CONF}
+APT::Default-Release "${THIS_DEBIAN_CODENAME}";
+EOF
+fi
+
+if [ -e ${THIS_APT_APT_CONF} ]; then
+	sed -i -r "s/${THIS_DEBIAN_OLD_CODENAME}/${THIS_DEBIAN_CODENAME}/g" ${THIS_APT_APT_CONF}
+fi
+
+exit 0
