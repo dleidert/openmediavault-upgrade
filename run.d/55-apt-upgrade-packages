@@ -25,7 +25,7 @@ wget
 
 echo "${PACKAGES}" | while read line
 do
-	apt-get install ${line} ${THIS_APT_UPGRADE_OPTIONS} --only-install || apt-get install -f
+	eval apt-get install ${line} ${THIS_APT_UPGRADE_OPTIONS} --only-install || apt-get install -f
 done
 
 exit 0
