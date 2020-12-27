@@ -5,9 +5,10 @@
 set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
+. $(dirname $(readlink -f "$0"))/../inc/omvvars
 
 mkdir -p ${THIS_BACKUP_DIR}
 
-cp -ar --parents /etc /var/lib/dpkg /var/lib/apt/extended_states /var/cache/openmediavault/ ${THIS_BACKUP_DIR}
+cp -ar --parents /etc /var/lib/dpkg /var/lib/apt/extended_states ${OMV_CACHE_DIR} ${THIS_BACKUP_DIR}
 
 exit 0
