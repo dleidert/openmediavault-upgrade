@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+# fix this installation error beforhand:
+# 
+# [..]
+# Updating configuration database ...
+# chown: invalid group: ':openmediavault-config'
+# ERROR: Failed to create the default configuration: Command '['/usr/share/openmediavault/confdb/create.d/conf.sh']' returned non-zero exit status 1
+# dpkg: error processing package openmediavault (--configure):
+#  subprocess installed post-installation script returned error exit status 1
+# [..]
+# Errors were encountered while processing:
+#  openmediavault
+# [..]
+# E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+groupadd --system openmediavault-config
+
+exit 0
