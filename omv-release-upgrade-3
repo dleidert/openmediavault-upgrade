@@ -1,0 +1,15 @@
+#/bin/sh
+
+THIS_SCRIPT=$(readlink -f "$0")
+THIS_PATH=$(dirname "$THISSCRIPT")
+THIS_PATH=${THIS_PATH=:-"."}
+
+set -e
+
+. ${THIS_PATH}/inc/envvars
+
+run-parts -v --exit-on-error ${THIS_PATH}/pre.d
+run-parts -v --exit-on-error ${THIS_PATH}/run.d
+run-parts -v --exit-on-error ${THIS_PATH}/post.d
+
+exit 0
