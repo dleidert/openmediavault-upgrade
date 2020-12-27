@@ -1,15 +1,20 @@
 #!/bin/sh
 
+set -e
+
+(
+
 THIS_SCRIPT=$(readlink -f "$0")
 THIS_PATH=$(dirname "$THIS_SCRIPT")
 THIS_PATH=${THIS_PATH=:-"."}
 
-set -e
-
 . ${THIS_PATH}/inc/envvars
+. ${THIS_PATH}/inc/localvars
 
 run-parts -v --exit-on-error ${THIS_PATH}/pre.d
 run-parts -v --exit-on-error ${THIS_PATH}/run.d
 run-parts -v --exit-on-error ${THIS_PATH}/post.d
+
+) | tee "omv_release_upgrade_to_${THIS_DEBIAN_CODENAME}.`date '+%F-%H%M%S'`.log" 2>&1
 
 exit 0
