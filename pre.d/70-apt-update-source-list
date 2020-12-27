@@ -18,7 +18,7 @@ deb-src http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME}/updates ma
 deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME}-updates main contrib non-free
 deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME}-updates main contrib non-free
 
-$(cat ${THIS_APT_SOURCES_LIST})
+$(cat ${THIS_APT_SOURCES_LIST}.bak)
 EOF
 
 exit 0
