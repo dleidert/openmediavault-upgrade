@@ -3,6 +3,7 @@
 set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/envvars
+. $(dirname $(readlink -f "$0"))/../inc/localvars
 
 PACKAGES="
 amd64-microcode intel-microcode
