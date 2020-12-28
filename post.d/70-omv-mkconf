@@ -4,7 +4,10 @@ set -e
 
 MODULES="
 apt
+collectd
 issue
+monit
+rrdcached
 rsyncd
 ssh
 timezone
