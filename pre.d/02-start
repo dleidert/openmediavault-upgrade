@@ -4,9 +4,6 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/omvvars
 
-OMV_UPGRADE_RELEASEVERSION=${OMV_UPGRADE_RELEASEVERSION:-"3.0"}
-OMV_UPGRADE_RELEASENAME=${OMV_UPGRADE_RELEASENAME:-"Erasmus"}
-
 cat << EOF
 ******************************************************************************
 Upgrading system to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ...
