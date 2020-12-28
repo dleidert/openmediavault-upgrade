@@ -8,12 +8,15 @@ cat << EOF
 ******************************************************************************
 Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
 
-Make sure to clear your browser cache before reloading the web GUI!!
-
-Otherwise you might see this error:
+Make sure to clear your browser cache before reloading the web GUI!! Otherwise
+you might see this error:
 
         missing 'required' attribute 'enabled'
 
+Some services might need to be re-started. Please check the system state
+afterwards. E.g. check for failed units/services:
+
+	sudo systemctl list-units --failed
 
 Please restart your system now.
 ******************************************************************************
