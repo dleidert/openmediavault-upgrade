@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/omvvars
+
+cat << EOF
+Trying to remount all data partitions. If that fails check which processes are
+using the device/partition:
+
+lsof /media/...id...
+
+It is recommended to disable all services utilized by openmediavault (e.g.
+samba, nfs, etc.) except SSH during the upgrade process.
+EOF
+
+media="$(xmlstarlet sel -t -m "//config/system/fstab/mntent/dir" -v . -n ${OMV_CONFIG_FILE} | xmlstarlet unesc)"
+for d in $media
+do
+	echo "Re-mounting ${m} read-only"
+	mount -o remount,ro $d
+done
+
+exit 0
