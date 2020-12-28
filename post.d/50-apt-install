@@ -4,6 +4,9 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less
+# https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#reduced-lsb-support
+apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less lsb-release
+
+# 
 
 exit 0
