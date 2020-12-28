@@ -14,6 +14,7 @@ repositories, if you heavily tempered with the system, etc. you might want to
 **read the [Release Notes for Jessie][relnotes]**. You might find the
 **chapters 4 and 5** as well as **appendix A** most important to read.
 
+[relnotes]: https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#openssh
 
 ## Preparations
 
@@ -24,13 +25,6 @@ while the upgrade is running: Services might not be reliable during the
 upgrade. Further the script will attempt to remount all data points as
 read-only during the upgrade. This will fail if these services are still
 accessing the data points in `/media/`.
-
-The script also only covers basic OMV installations. If you use encryption,
-customized boot screens, graphical desktop environments, etc. you might want to
-read the [Release Notes for Jessie][relnotes]. You might find the chapters 4
-and 5 as well as appendix A most important to read.
-
-[relnotes]: https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#openssh
 
 If the script is executed on remote system (e.g. over SSH) I highly recommend
 to use the [`screen`][screen] utility. Get it for your architecture (`dpkg
@@ -43,9 +37,9 @@ sudo dpkg -i screen_4.1.0~20120320gitdb59704-7+deb7u1_amd64.deb
 ```
 
 `screen` has the advantage that even if you loose the SSH connection - which
-will close the running shell as well together will all scripts and programs
-started from this shell - you can always login again and re-attach to the
-running `screen` session.
+will close the running shell together with all scripts and programs started
+from this shell - you can always login again and re-attach to the running
+`screen` session.
 
 [screen]: http://snapshot.debian.org/package/screen/4.1.0~20120320gitdb59704-7%2Bdeb7u1/
 
