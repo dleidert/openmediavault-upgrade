@@ -8,37 +8,20 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-echo -n "Looking for auto-mount targets lacking the nofail option... "
+echo "Looking for auto-mount targets lacking the nofail option... "
 
-targets="$(findmnt -s -i -O nofail -O noauto --output TARGET -n --raw)" || true
+cp -a ${THIS_FSTAB} ${THIS_FSTAB}.new
+awk '($4 ~ /auto/) && ($4 !~ /noauto/) && ($4 !~ /nofail/) {$4 = $4",nofail"} {print}' ${THIS_FSTAB}.new > ${THIS_FSTAB}.fix
+mv ${THIS_FSTAB}.fix ${THIS_FSTAB}.new
 
-if test -z "${targets}"
+if [ -n "$(diff -q ${THIS_FSTAB}.new ${THIS_FSTAB} 2>&1)" ]
 then
-	echo "none"
+        echo "Writing the proposed changes to ${THIS_FSTAB}"
+        echo "$(diff -puN ${THIS_FSTAB} ${THIS_FSTAB}.new)"
+        mv ${THIS_FSTAB} ${THIS_FSTAB}.bak
+        mv ${THIS_FSTAB}.new ${THIS_FSTAB}
 else
-	echo "${targets}"
-	cp -a ${THIS_FSTAB} ${THIS_FSTAB}.new
-	for t in $targets
-	do
-		awk -v t="$t" '($2 ~ t) && ($4 ~ /auto/) {$4 = $4",nofail"} {print}' ${THIS_FSTAB}.new > ${THIS_FSTAB}.fix
-		mv ${THIS_FSTAB}.fix ${THIS_FSTAB}.new
-	done
-	#whiptail --clear --scrolltext \
-	#  --backtitle "Writing proposed changes to ${THIS_FSTAB}" \
-	#  --title "Writing /etc/fstab" \
-	#  --yesno "Do you want to write these changes to ${THIS_FSTAB}?\n\n$(diff -puN ${THIS_FSTAB} ${THIS_FSTAB}.new)" \
-	#  20 80
-	#
-	#if [ $? -ne 0 ]
-	#then
-	#	rm -f ${THIS_FSTAB}.new
-	#	echo "Make sure that all auto-mount targets will be available during reboot."
-	#	exit 0
-	#fi
-	echo "Writing the proposed changes to ${THIS_FSTAB}"
-	echo "$(diff -puN ${THIS_FSTAB} ${THIS_FSTAB}.new)"
-	mv ${THIS_FSTAB} ${THIS_FSTAB}.bak
-	mv ${THIS_FSTAB}.new ${THIS_FSTAB}
+        rm -f ${THIS_FSTAB}.new
 fi
 
 exit 0
