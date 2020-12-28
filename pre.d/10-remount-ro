@@ -14,11 +14,14 @@ It is recommended to disable all services utilized by openmediavault (e.g.
 samba, nfs, etc.) except SSH during the upgrade process.
 EOF
 
-media="$(xmlstarlet sel -t -m "//config/system/fstab/mntent/dir" -v . -n ${OMV_CONFIG_FILE} | xmlstarlet unesc)"
-for d in $media
-do
-	echo "Re-mounting ${m} read-only"
-	mount -o remount,ro $d
-done
+media="$(xmlstarlet sel -t -m "//config/system/fstab/mntent/dir" -v . -n ${OMV_CONFIG_FILE} | xmlstarlet unesc || true)"
+if [ -n "${media}" ]
+then
+	for m in ${media}
+	do
+		echo "Re-mounting ${m} read-only"
+		mount -o remount,ro $d
+	done
+fi
 
 exit 0
