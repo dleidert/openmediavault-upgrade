@@ -4,7 +4,6 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-apt-get install ${THIS_APT_INSTALL_OPTIONS} plymouth console-setup debconf-utils less
-apt-get install ${THIS_APT_INSTALL_OPTIONS} --install-recommends linux-image-4.9-`dpkg --print-architecture`
+apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less
 
 exit 0
