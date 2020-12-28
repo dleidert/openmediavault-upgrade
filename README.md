@@ -26,8 +26,8 @@ Login to the system locally or remotely (via SSH). Download the tarball, unpack
 it, and run the script as root (or via _sudo_):
 
 ```
-wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/2.0.tar.gz | tar -xz
-cd openmediavault-upgrade-2.0
+wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/2.0.1.tar.gz | tar -xz
+cd openmediavault-upgrade-2.0.1
 sudo ./omv-release-upgrade-3
 ```
 
