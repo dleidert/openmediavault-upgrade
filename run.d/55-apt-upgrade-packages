@@ -5,26 +5,7 @@ set -e
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
 PACKAGES="
-amd64-microcode intel-microcode
-apt apt-utils
-base-passwd passwd
-bind9-host
-bsd-mailx bsdmainutils bsdutils
 collectd collectd-core rrdtool
-fontconfig
-ifenslave-2.6 iputils-ping iproute iptables isc-dhcp-client isc-dhcp-common
-libcairo2
-libsasl2-2
-parted
-procps
-proftpd-basic proftpd-mod-vroot
-python3 python3-apt
-rrdcached
-samba
-vim-tiny
-wget
-xfsprogs
-xz-utils
 "
 
 echo "${PACKAGES}" | while read line
