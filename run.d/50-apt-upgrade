@@ -4,6 +4,6 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-apt-get upgrade ${THIS_APT_UPGRADE_OPTIONS} || apt-get install -f
+apt-get upgrade ${THIS_APT_UPGRADE_OPTIONS} collectd+ rrdcached+ || apt-get install -f
 
 exit 0
