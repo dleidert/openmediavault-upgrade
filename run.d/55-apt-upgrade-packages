@@ -2,7 +2,6 @@
 
 set -e
 
-. $(dirname $(readlink -f "$0"))/../inc/envvars
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
 PACKAGES="

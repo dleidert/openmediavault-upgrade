@@ -7,7 +7,6 @@ debian-archive-keyring
 openmediavault-keyring
 "
 
-. $(dirname $(readlink -f "$0"))/../inc/envvars
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
 apt-get install ${KEYRINGS} ${THIS_APT_INSTALL_OPTIONS} --allow-unauthenticated --only-upgrade
