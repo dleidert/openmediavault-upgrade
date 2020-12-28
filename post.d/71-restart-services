@@ -3,8 +3,11 @@
 set -e
 
 SERVICES="
+collectd
+monit
 ntp
 php5-fpm
+rrdcached
 rsync
 ssh
 "
