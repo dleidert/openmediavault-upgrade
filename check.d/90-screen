@@ -12,4 +12,6 @@ dpkg -i ${debdir}/screen_4.1.0~20120320gitdb59704-7+deb7u1_`dpkg --print-archite
 
 rm -rf ${debdir}
 
+screen -dmLS ${THIS_UPGRADE_SCREEN_SESSION}
+
 exit 0

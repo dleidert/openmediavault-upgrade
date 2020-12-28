@@ -31,13 +31,13 @@ THIS_PATH=${THIS_PATH=:-"."}
 . ${THIS_PATH}/inc/envvars
 . ${THIS_PATH}/inc/localvars
 
-(
-
 run-parts -v --exit-on-error ${THIS_PATH}/check.d
-run-parts -v --exit-on-error ${THIS_PATH}/pre.d
-run-parts -v --exit-on-error ${THIS_PATH}/run.d
-run-parts -v --exit-on-error ${THIS_PATH}/post.d
 
-) | tee ${THIS_UPGRADE_LOGFILE} 2>&1
+screen -S ${THIS_UPGRADE_SCREEN_SESSION} -X run-parts -v --exit-on-error ${THIS_PATH}/pre.d
+screen -S ${THIS_UPGRADE_SCREEN_SESSION} -X run-parts -v --exit-on-error ${THIS_PATH}/run.d
+screen -S ${THIS_UPGRADE_SCREEN_SESSION} -X run-parts -v --exit-on-error ${THIS_PATH}/post.d
+
+screen -S ${THIS_UPGRADE_SCREEN_SESSION} -X quit
+mv -v screenlog.1 ${THIS_UPGRADE_LOGFILE}
 
 exit 0
