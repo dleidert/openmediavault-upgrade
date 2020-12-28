@@ -20,7 +20,7 @@ then
 	for d in ${media}
 	do
 		echo "Re-mounting ${m} read-only"
-		mount -o remount,ro $d
+		mount -v -o remount,ro $d
 	done
 fi
 
