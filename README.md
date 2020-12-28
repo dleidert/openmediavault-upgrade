@@ -94,7 +94,8 @@ The `rsync` service might be shown as not running although enabled. In this
 case disable and enable it via the GUI or use these commands:
 
 ```
-sudo systemctl enable rsync.service
+sudo systemctl enable rsync
+sudo systemctl start rsync
 sudo service rsync start
 ```
 
