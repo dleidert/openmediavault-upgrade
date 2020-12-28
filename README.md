@@ -49,10 +49,17 @@ Login to the system locally or remotely (via SSH).
 
 ### Preparing `screen` session
 
-If you have downloaded `screen` we create a session with the name `mysession`.
+If you have downloaded `screen` we create a session with the name `mysession`
+and log into it:
+
+```
+screen -dmS mysession
+screen -d -r mysession
+```
+
 You can always detach from the session pressing `<CTRL>+<a>` followed by `<d>`.
 To reattach to the session use the command `screen -d -r mysession`. To end the
-session type `exit` in the screen console.
+session type `exit` in the screen console. There are excellent howtos out there.
 
 ### Getting and running the upgrade script
 
