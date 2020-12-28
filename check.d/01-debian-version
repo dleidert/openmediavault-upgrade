@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+if [ "$(grep -ie ^version_id /etc/os-release)" != "VERSION_ID=\"${THIS_DEBIAN_VERSION}\"" ]
+then
+	echo "You are trying to run this script from Debian '`cat /etc/debian_version`', not Debian '${THIS_DEBIAN_CODENAME}'."
+	exit 1
+fi
+
+exit 0

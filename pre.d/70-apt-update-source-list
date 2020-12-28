@@ -9,14 +9,14 @@ mv ${THIS_APT_SOURCES_LIST} ${THIS_APT_SOURCES_LIST}.bak
 
 # prepend the file with the new entries
 cat <<EOF > ${THIS_APT_SOURCES_LIST}
-deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME} main contrib non-free
-deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME} main contrib non-free
+deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW} main contrib non-free
+deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW} main contrib non-free
 
-deb http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME}/updates main contrib non-free
-deb-src http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME}/updates main contrib non-free
+deb http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME_NEW}/updates main contrib non-free
+deb-src http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME_NEW}/updates main contrib non-free
 
-deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME}-updates main contrib non-free
-deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME}-updates main contrib non-free
+deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW}-updates main contrib non-free
+deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW}-updates main contrib non-free
 
 $(cat ${THIS_APT_SOURCES_LIST}.bak)
 EOF

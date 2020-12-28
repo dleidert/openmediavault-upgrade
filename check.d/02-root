@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+if [ `id -u` -ne 0 ]
+then
+        echo "The upgrade script needs to be run as root or with the 'sudo' command."
+        exit 1
+fi
+
+exit 0

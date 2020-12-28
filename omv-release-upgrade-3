@@ -2,18 +2,6 @@
 
 set -e
 
-if [ "$(grep -ie ^version_id /etc/os-release)" != 'VERSION_ID="7"' ]
-then
-	echo "You are trying to run this script from Debian '`cat /etc/debian_version`', not Debian 'wheezy'."
-	exit 1
-fi
-
-if [ `id -u` -ne 0 ]
-then
-        echo "This script needs to be run as root or with sudo."
-        exit 1
-fi
-
 THIS_SCRIPT=$(readlink -f "$0")
 THIS_PATH=$(dirname "$THIS_SCRIPT")
 THIS_PATH=${THIS_PATH=:-"."}
@@ -23,10 +11,11 @@ THIS_PATH=${THIS_PATH=:-"."}
 
 (
 
+run-parts -v --exit-on-error ${THIS_PATH}/check.d
 run-parts -v --exit-on-error ${THIS_PATH}/pre.d
 run-parts -v --exit-on-error ${THIS_PATH}/run.d
 run-parts -v --exit-on-error ${THIS_PATH}/post.d
 
-) | tee "omv_release_upgrade_to_${THIS_DEBIAN_CODENAME}.`date '+%F-%H%M%S'`.log" 2>&1
+) | tee ${THIS_LOGFILE} 2>&1
 
 exit 0
