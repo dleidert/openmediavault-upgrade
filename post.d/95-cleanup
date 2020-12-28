@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+# just in case this was left
+rm -fv /etc/cron-apt/refrain
+
+exit 0
