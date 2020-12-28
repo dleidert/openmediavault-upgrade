@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+kernver="$(uname -r)"
+
+if ($(dpkg --compare-versions "${kernver}" ">=" "4") && $(dpkg --compare-versions "${kernver}" "<<" "4.9")) ||
+   ($(dpkg --compare-versions "${kernver}" ">=" "3") && $(dpkg --compare-versions "${kernver}" "<<" "3.16.43"))
+then
+	echo "Upgrade cannot be done. Please update your kernel first by updating either of these"
+	echo
+	echo "        linux-image-$(dpkg --print-architecture) or"
+	echo "        linux-image-4.9-$(dpkg --print-architecture)"
+	echo
+	echo "to the latest version available in debian-security (no need for backports)."
+	echo
+        echo "See https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#pie-is-now-default"
+	exit 1
+fi
+
+exit 0
