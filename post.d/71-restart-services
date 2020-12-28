@@ -6,7 +6,7 @@ SERVICES="
 collectd
 monit
 ntp
-php5-fpm
+php7.0-fpm
 rrdcached
 rsync
 ssh
