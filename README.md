@@ -1,7 +1,7 @@
 # openmediavault-upgrade
 
-script to upgrade openmediavault from version 2 (Stoneburner) to version 3
-(Erasmus)
+script to upgrade openmediavault from version 3 (Erasmus) to version 4
+(Arrakis)
 
 ## Preambel
 
