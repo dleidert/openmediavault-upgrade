@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+if [ -n "$(dpkg --audit)" ]
+then
+	echo "Your package management reports packages in a failed state."
+	echo
+	echo "$(dpkg --audit)"
+	echo
+	echo "Fix those first before proceeding."
+	exit 1
+fi
+
+exit 0
