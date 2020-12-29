@@ -27,14 +27,14 @@ procps
 rsyslog
 samba
 smartmontools
-systemd
+systemd --install-recommends
 util-linux
 wget
 "
 
 echo "${PACKAGES}" | while read line
 do
-	apt-get install ${line} ${THIS_APT_UPGRADE_OPTIONS} --only-upgrade || apt-get install -f
+	apt-get install ${THIS_APT_UPGRADE_OPTIONS} --only-upgrade ${line} || apt-get install -f
 done
 
 exit 0
