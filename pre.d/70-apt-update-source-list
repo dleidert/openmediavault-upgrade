@@ -10,14 +10,14 @@ mv -v ${THIS_APT_SOURCES_LIST} ${THIS_APT_SOURCES_LIST_D}/${THIS_DEBIAN_CODENAME
 
 # Create the new sources.list.
 cat <<EOF > ${THIS_APT_SOURCES_LIST}
-deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW} main contrib non-free
-deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW} main contrib non-free
+deb https://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW} main contrib non-free
+deb-src https://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW} main contrib non-free
 
-deb http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME_NEW}/updates main contrib non-free
-deb-src http://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME_NEW}/updates main contrib non-free
+deb https://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME_NEW}/updates main contrib non-free
+deb-src https://deb.debian.org/debian-security ${THIS_DEBIAN_CODENAME_NEW}/updates main contrib non-free
 
-deb http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW}-updates main contrib non-free
-deb-src http://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW}-updates main contrib non-free
+deb https://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW}-updates main contrib non-free
+deb-src https://deb.debian.org/debian ${THIS_DEBIAN_CODENAME_NEW}-updates main contrib non-free
 EOF
 
 exit 0
