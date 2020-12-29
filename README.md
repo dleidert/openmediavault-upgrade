@@ -20,11 +20,11 @@ upgrading to.
 [tarball]: https://github.com/dleidert/openmediavault-upgrade/releases
 
 It is also possible to get the most recent version by downloading a tarball
-for a branch, e.g.:
+for a branch, e.g. for the `3` branch (upgrade OMV3 to 4):
 
 ```
-wget -qO- https://github.com/dleidert/openmediavault-upgrade/tarball/3 | tar -xz
-cd dleidert-openmediavault-upgrade-<hash>
+wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/3.tar.gz | tar -xz
+cd openmediavault-upgrade-3
 sudo ./omv-release-upgrade-4
 ```
 
