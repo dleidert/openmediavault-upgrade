@@ -1,6 +1,4 @@
 #!/bin/sh
-#
-# Copyright 2020 Daniel Leidert <daniel.leidert@wgdd.de>
 
 set -e
 
