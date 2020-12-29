@@ -19,7 +19,7 @@ if [ -n "${media}" ]
 then
 	for d in ${media}
 	do
-		echo "Re-mounting ${m} read-only"
+		echo "Re-mounting ${d} read-only"
 		mount -v -o remount,ro $d
 	done
 fi
