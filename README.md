@@ -83,7 +83,8 @@ all the services you need get enabled again or have been restarted.
 
 ### Special hints
 
-Nothing yet.
+When re-entering the web GUI of OMV you might be presented a request to apply
+your changes. Just follow the request.
 
 ## License
 
