@@ -27,7 +27,7 @@ procps
 rsyslog
 samba
 smartmontools
-systemd --install-recommends
+systemd
 util-linux
 wget
 "
