@@ -9,6 +9,4 @@ apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less lsb-release
 # https://www.debian.org/releases/stable/amd64/release-notes/ch-whats-new.en.html#merged-usr
 apt-get install ${THIS_APT_INSTALL_OPTIONS} usrmerge
 
-# 
-
 exit 0
