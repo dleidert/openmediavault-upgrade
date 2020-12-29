@@ -23,7 +23,7 @@ procps
 proftpd-basic
 python python3
 samba
-systemd --install-recommends
+systemd
 usbutils
 wget
 wpasupplicant

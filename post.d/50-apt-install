@@ -5,7 +5,7 @@ set -e
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
 # https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#reduced-lsb-support
-apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less lsb-release
+apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less libpam-systemd lsb-release
 # https://www.debian.org/releases/stable/amd64/release-notes/ch-whats-new.en.html#merged-usr
 apt-get install ${THIS_APT_INSTALL_OPTIONS} usrmerge
 
