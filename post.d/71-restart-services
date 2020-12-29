@@ -4,7 +4,7 @@ set -e
 
 SERVICES="
 nginx
-php7.0-fpm
+php7.3-fpm
 ssh
 "
 
