@@ -1,7 +1,7 @@
-# omv-release-upgrade-4
+# omv-release-upgrade-5
 
-script to upgrade openmediavault from version 3 (Erasmus) to version 4
-(Arrakis)
+script to upgrade openmediavault from version 4 (Arrakis) to version 5
+(Usul)
 
 ## Preambel
 
@@ -11,10 +11,10 @@ based on my knowledge of several successful upgrades and are tested in a VM.
 The script only covers "basic" OMV installations. If you use encryption,
 customized boot screens, graphical desktop environments, third party
 repositories, if you heavily tempered with the system, etc. you might want to
-**read the [Release Notes for Stretch][relnotes]**. You might find the
+**read the [Release Notes for Buster][relnotes]**. You might find the
 **chapters 4 and 5** as well as **appendix A** most important to read.
 
-[relnotes]: https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#openssh
+[relnotes]: https://www.debian.org/releases/buster/amd64/release-notes/ch-information.en.html#openssh
 
 ## Preparations
 
@@ -61,15 +61,15 @@ session type `exit` in the screen console. There are excellent howtos out there.
 Download the tarball, unpack it, and run the script as root (or via `sudo`):
 
 ```
-wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/3.0.tar.gz | tar -xz
-cd openmediavault-upgrade-3.0
-sudo ./omv-release-upgrade-4
+wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/4.0.tar.gz | tar -xz
+cd openmediavault-upgrade-4.0
+sudo ./omv-release-upgrade-5
 ```
 
 The scripts will run without asking you back but all the output is stored in a
 local logfile called
 
-`omv_release_upgrade_to_stretch.<date_and_time>.log`
+`omv_release_upgrade_to_buster.<date_and_time>.log`
 
 If an error occurs the script will stop. In this case add the log file if you
 seek support in the [forum] or in the [GitHub issue tracker].
@@ -79,20 +79,11 @@ Make sure to empty the browser cache before reloading the web site. Check that
 all the services you need get enabled again or have been restarted.
 
 [forum]: https://forum.openmediavault.org/
-[GitHub issue tracker]: https://github.com/dleidert/openmediavault-upgrade/labels/omv-3.x
+[GitHub issue tracker]: https://github.com/dleidert/openmediavault-upgrade/labels/omv-4.x
 
 ### Special hints
 
-The scripts will install the latest kernel 4.9 available via security updates.
-
-The `rsync` service might be shown as not running although enabled. In this
-case disable and enable it via the GUI or use these commands:
-
-```
-sudo systemctl enable rsync
-sudo systemctl start rsync
-sudo service rsync start
-```
+Nothing yet.
 
 ## License
 
