@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+for list in /etc/apt/sources.list.d/omvextras.list /etc/apt/sources.list.d/omv-extras-org.list
+do
+	if [ -f "${list}" ]
+	then
+		sed -i "/docker/d" ${list}
+	fi
+done
+
+exit 0
