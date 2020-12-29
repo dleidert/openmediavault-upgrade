@@ -2,12 +2,12 @@
 
 set -e
 
-if [ -n "$(dpkg --get-selections | grep 'hold$')" -o -n "$(aptitude search \"~ahold\")" ]
+if [ -n "$(dpkg --get-selections | grep 'hold$')" -o -n "$(aptitude search \"~ahold\" 2>/dev/null)" ]
 then
 	echo "You have packages on 'hold':"
 	echo
 	echo "$(dpkg --get-selections | grep 'hold$')"
-	echo "$(aptitude search \"~ahold\")"
+	echo "$(aptitude search \"~ahold\" 2>/dev/null)"
 	echo
 	echo "This can be disruptive to the upgrade."
 	exit 1
