@@ -5,6 +5,6 @@ set -e
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
 # fix /etc/issue
-apt-get upgrade ${THIS_APT_UPGRADE_OPTIONS} --option DPkg::Options::="--force-confnew" base-files
+apt-get install base-files ${THIS_APT_INSTALL_OPTIONS} --only-upgrade --option DPkg::Options::="--force-confmiss" --option DPkg::Options::="--force-confnew"
 
 exit 0
