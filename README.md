@@ -1,4 +1,4 @@
-# openmediavault-upgrade
+# omv-release-upgrade-3
 
 script to upgrade openmediavault from version 2 (Stoneburner) to version 3
 (Erasmus)
