@@ -5,14 +5,33 @@ set -e
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
 PACKAGES="
+apt apt-transport-https
+bind9-host
+e2fslibs
 gnupg
+groff-base
+iptables
 isc-dhcp-client isc-dhcp-common
+libgcc1
+login
+nfs-kernel-server
+ntfs-3g
+openssh-client openssh-server
+perl
+postfix
+procps
+proftpd-basic
+python python3
+samba
+systemd --install-recommends
+usbutils
 wget
+wpasupplicant
 "
 
 echo "${PACKAGES}" | while read line
 do
-	apt-get install ${line} ${THIS_APT_UPGRADE_OPTIONS} --only-upgrade || apt-get install -f
+	apt-get install ${THIS_APT_UPGRADE_OPTIONS} --only-upgrade ${line} || apt-get install -f
 done
 
 exit 0
