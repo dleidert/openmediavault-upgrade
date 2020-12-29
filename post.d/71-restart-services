@@ -3,12 +3,8 @@
 set -e
 
 SERVICES="
-collectd
-monit
-ntp
+nginx
 php7.0-fpm
-rrdcached
-rsync
 ssh
 "
 
