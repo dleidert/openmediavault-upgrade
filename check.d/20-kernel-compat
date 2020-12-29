@@ -9,8 +9,8 @@ if ($(dpkg --compare-versions "${kernver}" ">=" "4") && $(dpkg --compare-version
 then
 	echo "Upgrade cannot be done. Please update your kernel first by updating either of these"
 	echo
-	echo "        linux-image-$(dpkg --print-architecture) or"
-	echo "        linux-image-4.9-$(dpkg --print-architecture)"
+	echo "        linux-image-${THIS_HOST_ARCH} or"
+	echo "        linux-image-4.9-${THIS_HOST_ARCH}"
 	echo
 	echo "to the latest version available in debian-security (no need for backports)."
 	echo
