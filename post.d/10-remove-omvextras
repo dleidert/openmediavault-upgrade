@@ -4,7 +4,7 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-dpkg -i | awk '/^ii/ { print $2 }' | grep openmediavault-omvextrasorg || exit 0
+dpkg -l | awk '/^ii/ { print $2 }' | grep openmediavault-omvextrasorg || exit 0
 
 #https://forum.openmediavault.org/index.php?thread/27909-omv-5-0-finally-out/&postID=219830#post219830
 apt-get remove --purge ${THIS_APT_UPGRADE_OPTIONS} openmediavault-omvextrasorg resolvconf
