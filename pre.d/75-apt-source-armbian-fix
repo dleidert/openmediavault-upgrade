@@ -2,7 +2,9 @@
 
 set -e
 
-for list in /etc/apt/sources.list.d/armbian.list
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+for list in ${THIS_APT_SOURCES_LIST_D}/armbian.list
 do
 	if [ -f "${list}" ]
 	then

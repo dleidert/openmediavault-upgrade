@@ -2,12 +2,11 @@
 
 set -e
 
-for list in /etc/apt/sources.list.d/omvextras.list /etc/apt/sources.list.d/omv-extras-org.list
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+for list in ${THIS_APT_SOURCES_LIST_D}/omvextras.list ${THIS_APT_SOURCES_LIST_D}/omv-extras-org.list
 do
-	if [ -f "${list}" ]
-	then
-		sed -i "/docker/d" ${list}
-	fi
+	test -f "${list}" && sed -i "/docker/d" ${list}
 done
 
 exit 0
