@@ -12,12 +12,13 @@ bind9-host
 bsd-mailx bsdmainutils bsdutils
 collectd collectd-core rrdtool
 fontconfig
-ifenslave-2.6 iputils-ping iproute iptables isc-dhcp-client isc-dhcp-common
+ifenslave-2.6 iputils-ping iproute iptables
+isc-dhcp-client isc-dhcp-common
 libcairo2
 libsasl2-2
 parted
 procps
-proftpd-basic proftpd-mod-vroot
+proftpd-basic
 python3 python3-apt
 rrdcached
 samba
@@ -29,7 +30,7 @@ xz-utils
 
 echo "${PACKAGES}" | while read line
 do
-	apt-get install ${line} ${THIS_APT_UPGRADE_OPTIONS} --only-upgrade || apt-get install -f
+	apt-get install ${THIS_APT_UPGRADE_OPTIONS} --only-upgrade ${line} || apt-get install -f
 done
 
 exit 0
