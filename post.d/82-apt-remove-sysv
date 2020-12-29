@@ -3,6 +3,6 @@
 set -e
 
 # https://www.debian.org/releases/stable/amd64/release-notes/ch-information.en.html#obsolete-sysvinit-packages
-apt-get autoremove --purge initscripts insserv startpar sysv-rc
+apt-get autoremove --purge --yes initscripts insserv startpar sysv-rc
 
 exit 0
