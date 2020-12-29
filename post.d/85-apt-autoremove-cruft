@@ -4,10 +4,12 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
+currkern="linux-image-`uname -r`+ linux-headers-`uname -r`+"
+
 apt-get install ${THIS_APT_UPGRADE_OPTIONS} apt-show-versions deborphan
 
-apt-show-versions | grep 'No available version' | awk -F: '{print $1}' | xargs apt-get autoremove --purge --yes
-deborphan | xargs apt-get autoremove --purge --yes
+apt-show-versions | grep 'No available version' | awk -F: '{print $1}' | xargs apt-get autoremove --purge --yes ${currkern}
+deborphan | xargs apt-get autoremove --purge --yes ${currkern}
 dpkg -l | awk '/^rc/ { print $2 }' | xargs apt-get autoremove --purge --yes
 
 exit 0
