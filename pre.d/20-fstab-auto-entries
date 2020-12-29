@@ -1,13 +1,10 @@
 #!/bin/sh
-#
-# Copyright 2020 Daniel Leidert <daniel.leidert@wgdd.de>
-#
-# https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#systemd-auto-mounts-incompat
 
 set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
+# https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#systemd-auto-mounts-incompat
 echo "Looking for auto-mount targets lacking the nofail option... "
 
 cp -a ${THIS_FSTAB} ${THIS_FSTAB}.new
