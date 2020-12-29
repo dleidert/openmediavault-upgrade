@@ -2,7 +2,6 @@
 
 set -e
 
-# just in case this was left
-rm -fv /etc/cron-apt/refrain
+omv-confdbadm migrate conf 5.0.0
 
 exit 0
