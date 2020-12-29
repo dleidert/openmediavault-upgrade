@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+dpkg -i | awk '/^ii/ { print $2 }' | grep openmediavault-omvextrasorg || exit 0
+
+#https://forum.openmediavault.org/index.php?thread/27909-omv-5-0-finally-out/&postID=219830#post219830
+apt-get remove --purge ${THIS_APT_UPGRADE_OPTIONS} openmediavault-omvextrasorg resolvconf
+wget -qO- https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash
+
+apt-get update ${THIS_APT_UPDATE_OPTIONS}
+apt-get dist-upgrade ${THIS_APT_UPGRADE_OPTIONS} || apt-get install -f
+
+exit 0
