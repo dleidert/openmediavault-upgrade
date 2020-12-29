@@ -27,7 +27,7 @@ set -e
 
 if [ -n "${remain}" ]
 then
-	apt-get autoremove --purge --yes ${remain}
+	apt-get autoremove --yes ${remain}
 fi
 
 exit 0
