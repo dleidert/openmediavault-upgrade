@@ -10,7 +10,7 @@ OMV2 -> 3: <https://github.com/dleidert/openmediavault-upgrade/tree/2>
 
 OMV3 -> 4: <https://github.com/dleidert/openmediavault-upgrade/tree/3>
 
-OMV4 -> 5: ...to be written...
+OMV4 -> 5: <https://github.com/dleidert/openmediavault-upgrade/tree/4>
 
 Every branch has its own `README` file with instructions. Basically just get
 the [tarball] for your OMV version, unpack it, and run the
