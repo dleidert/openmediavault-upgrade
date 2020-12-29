@@ -4,9 +4,9 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-if [ -n "$(dpkg -l | awk '/^ii/ { print $2 }' | grep -e '^busybox$')" -a
-     -n "$(dpkg -l | awk '/^ii/ { print $2 }' | grep -e '^cryptsetup$')" -a
-     -n "$(grep -e 'BUSYBOX=n' /etc/initramfs-tools/initramfs.conf)" ]
+if [ -n "$(dpkg -l | awk '/^ii/ { print $2 }' | grep -e '^busybox$')" ] &&
+   [ -n "$(dpkg -l | awk '/^ii/ { print $2 }' | grep -e '^cryptsetup$')" ] &&
+   [ -n "$(grep -e 'BUSYBOX=n' /etc/initramfs-tools/initramfs.conf)" ]
 then
 	echo "You are using a setup which can break in '${THIS_DEBIAN_CODENAME_NEW}':"
 	echo "https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#cryptsetup-busybox"

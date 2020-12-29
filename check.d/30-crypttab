@@ -4,7 +4,8 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-if [ -n "$(grep -e precheck -e check -e checkargs -e noearly -e loud -e keyscript /etc/crypttab)" ]
+if [ -f '/etc/crypttab' ] && 
+   [ -n "$(grep -e precheck -e check -e checkargs -e noearly -e loud -e keyscript /etc/crypttab)" ]
 then
 	echo "You are using features not supported by systemd in '${THIS_DEBIAN_CODENAME_NEW}':"
 	echo "https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#systemd-cryptsetup-unsupported-features"
