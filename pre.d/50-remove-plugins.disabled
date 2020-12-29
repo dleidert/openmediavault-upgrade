@@ -18,7 +18,7 @@ set -e
 
 for p in ${PLUGINS}
 do
-	dpkg -i | awk '/^ii/ { print $2 }' | grep openmediavault-${p} && apt-get autoremove --purge --yes openmediavault-${p}
+	dpkg -l | awk '/^ii/ { print $2 }' | grep openmediavault-${p} && apt-get autoremove --purge --yes openmediavault-${p}
 done
 
 exit 0
