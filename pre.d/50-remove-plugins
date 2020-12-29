@@ -1,0 +1,40 @@
+#!/bin/sh
+
+PLUGINS="
+cups
+dnsmasq
+docker-gui
+domoticz
+duplicati
+eyefi
+ldap
+letsencrypt
+mysql
+nginx
+openvpn
+pxe
+remotedesktop
+route
+shellinabox
+syncthing
+transmissionbt
+urbackup-server
+vdo
+virtualbox
+webdav
+netatalk
+route
+mumble
+vdr
+vdr-extras
+vdr-vnsiserver
+"
+
+set -e
+
+for p in ${PLUGINS}
+do
+	apt-get autoremove --purge --yes openmediavault-${p}
+done
+
+exit 0
