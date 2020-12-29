@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+apt-get install ${THIS_APT_UPGRADE_OPTIONS} apt-show-versions deborphan
+
+deborphan | xargs apt-get autoremove --purge --yes
+apt-show-versions | grep 'No available version' | awk -F: '{print $1}' | xargs apt-get autoremove --purge --yes
+
+exit 0
