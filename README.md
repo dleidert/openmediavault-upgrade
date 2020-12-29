@@ -66,8 +66,8 @@ session type `exit` in the screen console. There are excellent howtos out there.
 Download the tarball, unpack it, and run the script as root (or via `sudo`):
 
 ```
-wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/2.1.tar.gz | tar -xz
-cd openmediavault-upgrade-2.1
+wget -qO- https://github.com/dleidert/openmediavault-upgrade/archive/2.2.tar.gz | tar -xz
+cd openmediavault-upgrade-2.2
 sudo ./omv-release-upgrade-3
 ```
 
