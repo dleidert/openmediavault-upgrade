@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/omvvars
+
+sed -i "s/<mtu><\/mtu>/<mtu>0<\/mtu>/g" ${OMV_CONFIG_FILE}
+
+exit 0
