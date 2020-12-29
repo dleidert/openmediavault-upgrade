@@ -18,6 +18,9 @@ afterwards. E.g. check for failed units/services:
 
 	sudo systemctl list-units --failed
 
+You might also be presented a request to apply the changes to OMV. Just hit
+the <Apply> button
+
 Please restart your system now.
 ******************************************************************************
 EOF
