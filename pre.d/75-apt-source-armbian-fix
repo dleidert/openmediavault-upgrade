@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+for list in /etc/apt/sources.list.d/armbian.list
+do
+	if [ -f "${list}" ]
+	then
+		mv -v ${list} ${list}.disabled
+		echo "deb http://apt.armbian.com buster main buster-utils" > ${list}
+	fi
+done
+
+exit 0
