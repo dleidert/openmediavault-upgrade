@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+sed -i 's/http:/https:/g' ${THIS_APT_SOURCES_LIST}
+apt-get update ${THIS_APT_UPDATE_OPTIONS}
+
+exit 0
