@@ -1,22 +1,25 @@
 #!/bin/sh
 
 PLUGINS="
-openmediavault-clamav
-openmediavault-forkeddaapd
-openmediavault-iscsitarget
-openmediavault-ldap
-openmediavault-lvm2
-openmediavault-netatalk
-openmediavault-nut
-openmediavault-owncloud
-openmediavault-route
-openmediavault-shairport
-openmediavault-usbbackup
+clamav
+forkeddaapd
+iscsitarget
+ldap
+lvm2
+netatalk
+nut
+owncloud
+route
+shairport
+usbbackup
 "
 
 set -e
 
-apt-get autoremove --purge --yes ${PLUGINS}
+for p in ${PLUGINS}
+do
+	dpkg -i | awk '/^ii/ { print $2 }' | grep openmediavault-${p} && apt-get autoremove --purge --yes openmediavault-${p}
+done
 
 set +e
 remain="$(dpkg -l | grep ^ii | awk '{print $2}' | grep openmediavault | grep -ve "^\(openmediavault\|openmediavault-keyring\)$")"
