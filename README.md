@@ -96,7 +96,7 @@ case disable and enable it via the GUI or use these commands:
 ```
 sudo systemctl enable rsync
 sudo systemctl start rsync
-sudo service rsync start
+sudo systemctl status rsync
 ```
 
 ## License
