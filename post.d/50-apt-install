@@ -8,6 +8,4 @@ set -e
 apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less lsb-release
 apt-get install ${THIS_APT_INSTALL_OPTIONS} linux-image-4.19-${THIS_HOST_ARCH}
 
-# 
-
 exit 0
