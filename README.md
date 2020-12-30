@@ -30,7 +30,7 @@ If the script is executed on remote system (e.g. over SSH) I highly recommend
 to use the [`screen`][https://packages.debian.org/screen] utility. Get it via:
 
 ```
-sudo pt-get install -y screen
+sudo apt-get install -y screen
 ```
 
 `screen` has the advantage that even if you loose the SSH connection - which
