@@ -26,7 +26,7 @@ upgrade. Further the script will attempt to remount all data points as
 read-only during the upgrade. This will fail if these services are still
 accessing the data points in `/media/`.
 
-If the script is executed on remote system (e.g. over SSH) I highly recommend
+If the script is executed on  aremote system (e.g. over SSH) I highly recommend
 to use the [`screen`][https://packages.debian.org/screen] utility. Get it via:
 
 ```
