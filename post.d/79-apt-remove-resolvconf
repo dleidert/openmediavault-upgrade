@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+apt-get autoremove --purge --yes resolvconf
+
+exit 0

@@ -18,7 +18,7 @@ EOF
 fi
 
 #https://forum.openmediavault.org/index.php?thread/27909-omv-5-0-finally-out/&postID=219830#post219830
-apt-get remove --purge ${THIS_APT_UPGRADE_OPTIONS} openmediavault-omvextrasorg resolvconf
+apt-get remove --purge ${THIS_APT_UPGRADE_OPTIONS} openmediavault-omvextrasorg
 wget -qO- https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash
 
 apt-get update ${THIS_APT_UPDATE_OPTIONS}
