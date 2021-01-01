@@ -33,11 +33,12 @@ THIS_PATH=${THIS_PATH=:-"."}
 
 (
 
+date -Ins
 run-parts -v --exit-on-error ${THIS_PATH}/check.d
 run-parts -v --exit-on-error ${THIS_PATH}/pre.d
 run-parts -v --exit-on-error ${THIS_PATH}/run.d
 run-parts -v --exit-on-error ${THIS_PATH}/post.d
 
-) | tee ${THIS_UPGRADE_LOGFILE} 2>&1
+) 2>&1 | tee ${THIS_UPGRADE_LOGFILE}
 
 exit 0
