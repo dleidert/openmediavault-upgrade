@@ -9,25 +9,25 @@ duplicati
 eyefi
 ldap
 letsencrypt
+mumble
 mysql
+netatalk
 nginx
 openvpn
 pxe
 remotedesktop
+route
 route
 shellinabox
 syncthing
 transmissionbt
 urbackup-server
 vdo
-virtualbox
-webdav
-netatalk
-route
-mumble
 vdr
 vdr-extras
 vdr-vnsiserver
+virtualbox
+webdav
 "
 
 set -e
