@@ -1,3 +1,4 @@
 *.log
 inc/omvvars
 pre.d/test.fstab*
+logs/

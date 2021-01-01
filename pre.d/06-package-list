@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set  -e
+
+echo "***** Begin /* Local Package List */ *****"
+dpkg-query -W -f='${binary:Package;50}\t${Version}\n' | sort
+echo "***** End /* Local Package List */ *****"
+
+exit 0
