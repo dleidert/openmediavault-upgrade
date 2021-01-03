@@ -12,7 +12,7 @@ TERM
 "
 for v in ${ENVIRONMENT}
 do
-	print "${v}=$(printenv $v)"
+	echo "${v}=$(printenv $v)"
 done
 echo "***** End /* System Environment */ *****"
 
