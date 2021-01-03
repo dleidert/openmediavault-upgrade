@@ -18,6 +18,7 @@ cat << EOF > /etc/default/chrony
 # This has been altered by the omv-release-upgrade-5 script (see README.md):
 DAEMON_OPTS="-F 0"
 EOF
+echo "Applying fix for chronyd running on system without SECCOMP support."
 fi
 
 exit 0
