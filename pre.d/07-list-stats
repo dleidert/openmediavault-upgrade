@@ -24,8 +24,11 @@ echo "***** Begin /* Local Package List */ *****"
 dpkg-query -W -f='${binary:Package}\t${Version}\n' | sort
 echo "***** End /* Local Package List */ *****"
 
-echo "***** Begin /* Unit List */ *****"
-systemctl list-units --full --no-pager
-echo "***** End /* Unit List */ *****"
+if [ -f "$(which systemctl)" ]
+then
+	echo "***** Begin /* Unit List */ *****"
+	systemctl list-units --full --no-pager
+	echo "***** End /* Unit List */ *****"
+fi
 
 exit 0
