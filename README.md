@@ -83,6 +83,27 @@ all the services you need get enabled again or have been restarted.
 
 ### Special hints
 
+#### Chronyd
+
+For the upgrade to succeed it is vital to disable the seccomp filter for the
+`chronyd` service on systems having seccomp support disabled at the time of
+upgrade. If the upgraded kernel has support for seccomp:
+
+```
+grep CONFIG_SECCOMP /boot/config-$(uname -r)
+CONFIG_SECCOMP=y
+CONFIG_SECCOMP_FILTER=y
+```
+
+(the **y** says it is enabled) you can restore running chronyd with seccomp
+rules by editing `/etc/default/chrony` and setting the `DAEMON_OPTS` back to:
+
+```
+DAEMON_OPTS="-F -1"
+```
+
+#### Weg GUI
+
 When re-entering the web GUI of OMV you might be presented a request to apply
 your changes. Just follow the request.
 
