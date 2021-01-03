@@ -2,6 +2,24 @@
 
 set  -e
 
+echo "***** Begin /* System Environment */ *****"
+# don't print everything
+ENVIRONMENT="
+COLORTERM
+LANG
+SHELL
+TERM
+"
+for v in ${ENVIRONMENT}
+do
+	print "${v}=$(printenv $v)"
+done
+echo "***** End /* System Environment */ *****"
+
+echo "***** Begin /* Kernel Version */ *****"
+uname -r
+echo "***** End /* Kernel Version */ *****"
+
 echo "***** Begin /* Local Package List */ *****"
 dpkg-query -W -f='${binary:Package}\t${Version}\n' | sort
 echo "***** End /* Local Package List */ *****"
