@@ -90,7 +90,8 @@ For the upgrade to succeed it is vital to disable the seccomp filter for the
 upgrade. If the upgraded kernel has support for seccomp:
 
 ```
-grep CONFIG_SECCOMP /boot/config-$(uname -r)
+sudo modprobe -q configs
+zgrep CONFIG_SECCOMP /boot/config-$(uname -r) /proc/config*
 CONFIG_SECCOMP=y
 CONFIG_SECCOMP_FILTER=y
 ```
