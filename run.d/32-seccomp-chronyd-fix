@@ -2,14 +2,19 @@
 
 set -e
 
+CONFIG="/boot/config-`uname -r` /proc/config*"
+
+# https://forum.openmediavault.org/index.php?thread/37269-upgrade-scripts-for-non-interactive-major-release-upgrades-2-3-3-4-4-5/&postID=260801#post260801
+modprobe -q configs || true
+
 # https://github.com/dleidert/openmediavault-upgrade/issues/3
 # If either SECCOMP or SECCOMP_FILTER are disabled, or if SECCOMP is not
 # explicitely enabled we go with disabling seccomp support for chronyd.
-if [ -n "$(grep 'CONFIG_SECCOMP=n' /boot/config-`uname -r`)" ] ||
-   [ -n "$(grep 'CONFIG_SECCOMP_FILTER=n' /boot/config-`uname -r`)" ] ||
-   [ -z "$(grep 'CONFIG_SECCOMP=y' /boot/config-`uname -r`)" ]
+if [ -n "$(zgrep 'CONFIG_SECCOMP=n' ${CONFIGS} )" ] ||
+   [ -n "$(zgrep 'CONFIG_SECCOMP_FILTER=n' ${CONFIGS})" ] ||
+   [ -z "$(zgrep 'CONFIG_SECCOMP=y' ${CONFIGS})" ]
 then
-cat << EOF > /etc/default/chrony
+	cat << EOF > /etc/default/chrony
 # This is a configuration file for /etc/init.d/chrony and
 # /lib/systemd/system/chrony.service; it allows you to pass various options to
 # the chrony daemon without editing the init script or service file.
@@ -18,7 +23,10 @@ cat << EOF > /etc/default/chrony
 # This has been altered by the omv-release-upgrade-5 script (see README.md):
 DAEMON_OPTS="-F 0"
 EOF
-echo "Applying fix for chronyd running on system without SECCOMP support."
+	echo "Applying fix to /etc/default/chrony for chronyd running on a system without SECCOMP support."
+else
+	echo "SECCOMP support is enabled. Not touching /etc/default/chrony."
+	$(zgrep -n 'CONFIG' ${CONFIGS}) || true
 fi
 
 exit 0
