@@ -2,7 +2,7 @@
 
 set -e
 
-CONFIG="/boot/config-`uname -r` /proc/config*"
+CONFIGS="/boot/config-`uname -r` /proc/config*"
 
 # https://forum.openmediavault.org/index.php?thread/37269-upgrade-scripts-for-non-interactive-major-release-upgrades-2-3-3-4-4-5/&postID=260801#post260801
 modprobe -q configs || true
@@ -26,7 +26,7 @@ EOF
 	echo "Applying fix to /etc/default/chrony for chronyd running on a system without SECCOMP support."
 else
 	echo "SECCOMP support is enabled. Not touching /etc/default/chrony."
-	$(zgrep -n 'CONFIG' ${CONFIGS}) || true
+	zgrep -n 'CONFIG_SECCOMP' ${CONFIGS} || true
 fi
 
 exit 0
