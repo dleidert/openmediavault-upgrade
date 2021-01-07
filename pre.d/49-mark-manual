@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+PACKAGES="
+plexmediaserver
+duplicati
+docker-ce
+"
+
+apt-mark manual ${PACKAGES}
+
+exit 0
