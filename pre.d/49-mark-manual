@@ -8,6 +8,6 @@ duplicati
 docker-ce
 "
 
-apt-mark manual ${PACKAGES}
+apt-mark manual ${PACKAGES} || true
 
 exit 0
