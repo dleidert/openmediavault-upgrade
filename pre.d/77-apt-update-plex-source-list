@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+test ${THIS_UPGRADE_KEEP_PLEX} || exit 0
+
+sed -i -e '/^\s*#\s*deb/ c deb [trusted=yes] https://downloads.plex.tv/repo/deb/ public main' ${THIS_APT_SOURCES_LIST_D_PLEX}
+wget -q https://downloads.plex.tv/plex-keys/PlexSign.key -O - | apt-key add -
+
+echo "Enabled plex repository and installed repository key."
+
+exit 0
