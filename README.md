@@ -27,7 +27,7 @@ read-only during the upgrade. This will fail if these services are still
 accessing the data points in `/media/`.
 
 If the script is executed on  aremote system (e.g. over SSH) I highly recommend
-to use the [`screen`][https://packages.debian.org/screen] utility. Get it via:
+to use the [`screen`](https://packages.debian.org/screen) utility. Get it via:
 
 ```
 sudo apt-get install -y screen
