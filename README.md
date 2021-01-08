@@ -38,6 +38,30 @@ will close the running shell together with all scripts and programs started
 from this shell - you can always login again and re-attach to the running
 `screen` session.
 
+### Plexmediaserver
+
+In OMV5 the `openmediavault-plexmediaserver` plugin has been removed. The PLEX
+media server is supposed to run via docker/portainer. Thus the
+`plexmediaserver` package will be removed together with the plugin except you
+have enabled the plex repository in
+`/etc/apt/sources.list.d/plexmediaserver.list` and installed the key as
+described in the file:
+
+```
+# When enabling this repo please remember to add the PlexPublic.Key into the apt setup.
+# wget -q https://downloads.plex.tv/plex-keys/PlexSign.key -O - | sudo apt-key add -
+deb https://downloads.plex.tv/repo/deb/ public main
+```
+
+This will keep the `plexmediaserver` package in the system. But know that there
+is no GUI entry for it anymore. The scripts can enable the repository for you.
+In [`inc/envvars`](inc/envvars) uncomment the following line and set the
+variable to *anything other than `0`* (just uncommenting is fine):
+
+```
+export THIS_UPGRADE_KEEP_PLEX=1
+```
+
 ## Usage
 
 Login to the system locally or remotely (via SSH).

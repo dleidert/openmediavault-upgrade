@@ -1,3 +1,5 @@
 export LANG=C
 export DEBIAN_FRONTEND=noninteractive
 export APT_LISTCHANGES_FRONTEND=none
+
+#export THIS_UPGRADE_KEEP_PLEX=1
