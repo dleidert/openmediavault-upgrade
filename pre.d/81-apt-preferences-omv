@@ -2,6 +2,8 @@
 
 set -e
 
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
 # Temporarily pin the packages from openmediavault.org higher then APT::Default-Release
 # This will prevent the backports from being puled in.
 # https://github.com/dleidert/openmediavault-upgrade/issues/11
