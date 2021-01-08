@@ -3,9 +3,10 @@
 set -e
 
 PACKAGES="
-plexmediaserver
-duplicati
+certbot
 docker-ce
+duplicati
+plexmediaserver
 "
 
 apt-mark manual ${PACKAGES} || true
