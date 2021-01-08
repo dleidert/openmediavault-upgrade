@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+# Temporarily pin the packages from openmediavault.org higher then APT::Default-Release
+# This will prevent the backports from being puled in.
+# https://github.com/dleidert/openmediavault-upgrade/issues/11
+cat << EOF > ${THIS_APT_PREFERENCES_D_OMV}
+Package: *
+Pin: release o=openmediavault.org*
+Pin-Priority: 995
+EOF
+
+exit 0

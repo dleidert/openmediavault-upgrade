@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+omv-confdbadm migrate conf 5.0.0
+
+exit 0

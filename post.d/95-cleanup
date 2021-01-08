@@ -2,6 +2,8 @@
 
 set -e
 
-omv-confdbadm migrate conf 5.0.0
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+rm -f ${THIS_APT_PREFERENCES_D_OMV}
 
 exit 0
