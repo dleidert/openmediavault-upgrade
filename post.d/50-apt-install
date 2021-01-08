@@ -16,8 +16,7 @@ CONFLICTS_removed=""
 
 for p in ${CONFLICTS}
 do
-	dpkg -l | awk '/^ii/ { print $2 }' | grep ${p} && apt-get remove --yes ${p}
-	CONFLICTS_removed="${p} ${CONFLICTS_removed}"
+	dpkg -l | awk '/^ii/ { print $2 }' | grep ${p} && CONFLICTS_removed="${p} ${CONFLICTS_removed}" && apt-get remove --yes ${p}
 done
 
 apt-get install ${THIS_APT_INSTALL_OPTIONS} usrmerge
