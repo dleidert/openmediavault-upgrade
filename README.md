@@ -40,11 +40,12 @@ from this shell - you can always login again and re-attach to the running
 
 ### Plexmediaserver
 
-In OMV5 the `openmediavault-plexmediaserver` has been removed. The PLEX media
-server is supposed to run via docker/portainer. Thus the `plexmediaserver`
-package will be removed together with the plugin except you have enabled the
-plex repository in `/etc/apt/sources.list.d/plexmediaserver.list` and installed
-the key as described in the file:
+In OMV5 the `openmediavault-plexmediaserver` plugin has been removed. The PLEX
+media server is supposed to run via docker/portainer. Thus the
+`plexmediaserver` package will be removed together with the plugin except you
+have enabled the plex repository in
+`/etc/apt/sources.list.d/plexmediaserver.list` and installed the key as
+described in the file:
 
 ```
 # When enabling this repo please remember to add the PlexPublic.Key into the apt setup.
@@ -52,8 +53,10 @@ the key as described in the file:
 deb https://downloads.plex.tv/repo/deb/ public main
 ```
 
-The scripts can do this for you. In [`inc/envvars`](inc/envvars) uncomment the
-following line and set the variable to *anything other than `0`*:
+This will keep the `plexmediaserver` package in the system. But know that there
+is no GUI entry for it anymore. The scripts can enable the repository for you.
+In [`inc/envvars`](inc/envvars) uncomment the following line and set the
+variable to *anything other than `0`* (just uncommenting is fine):
 
 ```
 export THIS_UPGRADE_KEEP_PLEX=1
