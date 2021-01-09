@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# jessie-backports has been removed from the Debian archives
+# https://github.com/dleidert/openmediavault-upgrade/issues/5
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+sed -i -e '/jessie-backports/ s/^[^#]/#/g' ${THIS_APT_SOURCES_LIST} ${THIS_APT_SOURCES_LIST_D}/*
+
+exit 0
