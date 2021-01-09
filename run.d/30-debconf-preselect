@@ -4,10 +4,16 @@ set -e
 
 # keep nobody's shell
 # https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#base-passwd-hardening
-shell="$(grep nobody /etc/passwd | awk -F ':' '{print $7}' | tr '/' '_')"
-echo "base-passwd base-passwd/system/user/nobody/shell/${shell}/_usr_sbin_nologin boolean false" | debconf-set-selections
-shell="$(grep backup /etc/passwd | awk -F ':' '{print $7}' | tr '/' '_')"
-echo "base-passwd base-passwd/system/user/backup/shell/${shell}/_usr_sbin_nologin boolean false" | debconf-set-selections
+USERS="
+backup
+nobody
+"
+
+for u in ${USERS}
+do
+	shell="$(awk -F':' -v user="${u}" '$1 == user {print $7}' /etc/passwd | tr '/' '_')"
+	test -n "${shell}" && (echo "base-passwd base-passwd/system/user/${u}/shell/${shell}/_usr_sbin_nologin boolean false" | debconf-set-selections)
+done
 
 # if PermitRootLogin is not set or not disabled keep it
 # https://www.debian.org/releases/jessie/amd64/release-notes/ch-information.en.html#openssh
