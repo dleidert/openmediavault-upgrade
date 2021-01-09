@@ -27,7 +27,7 @@ done
 
 for s in ${SERVICES_ENABLE}
 do
-	systemctl enable ${s}
+	test -n "$(systemctl list-units --all | grep ${s})" && systemctl enable ${s}
 done
 
 exit 0
