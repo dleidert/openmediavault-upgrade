@@ -14,14 +14,16 @@ docker
 # There is a likelyhood that services to be disabled must be stopped too.
 for s in ${SERVICES_DISABLE} ${SERVICES_STOP}
 do
-	systemctl is-active --quiet ${s}
-	test $? -eq 0 && systemctl stop ${s}
+	retval=0
+	systemctl is-active --quiet ${s} || retval=$?
+	test ${retval} -eq 0 && systemctl stop ${s}
 done
 
 for s in ${SERVICES_DISABLE}
 do
-	systemctl is-enabled --quiet ${s}
-	test $? -eq 0 && systemctl disable ${s}
+	retval=0
+	systemctl is-enabled --quiet ${s} || retval=$?
+	test ${retval} -eq 0 && systemctl disable ${s}
 done
 
 exit 0
