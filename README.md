@@ -14,7 +14,7 @@ repositories, if you heavily tempered with the system, etc. you might want to
 **read the [Release Notes for Stretch][relnotes]**. You might find the
 **chapters 4 and 5** as well as **appendix A** most important to read.
 
-[relnotes]: https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#openssh
+[relnotes]: https://www.debian.org/releases/stretch/amd64/release-notes/index.en.html
 
 ## Preparations
 
@@ -26,7 +26,7 @@ upgrade. Further the script will attempt to remount all data points as
 read-only during the upgrade. This will fail if these services are still
 accessing the data points in `/media/`.
 
-If the script is executed on  aremote system (e.g. over SSH) I highly recommend
+If the script is executed on a remote system (e.g. over SSH) I highly recommend
 to use the [`screen`](https://packages.debian.org/screen) utility. Get it via:
 
 ```

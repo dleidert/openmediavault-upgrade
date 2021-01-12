@@ -8,17 +8,23 @@ cat << EOF
 ******************************************************************************
 Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
 
+The following packages don't appear in any of the available repositories
+anymore:
+
+$(apt-show-versions | awk '/No available version/ {print "\t" $1 " " $2}')
+
+Check carefully if you need them. Otherwise they can be removed.
+
 Make sure to clear your browser cache before reloading the web GUI!! Otherwise
 you might see this error:
 
-        missing 'required' attribute 'enabled'
+	missing 'required' attribute 'enabled'
 
-Some services might need to be re-started. Please check the system state
-afterwards. E.g. check for failed units/services:
+Some services might need a restart. Restart your system now. Please check the
+system state afterwards. E.g. check for failed units/services:
 
 	sudo systemctl list-units --failed
 
-Please restart your system now.
 ******************************************************************************
 EOF
 
