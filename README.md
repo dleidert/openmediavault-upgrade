@@ -14,7 +14,7 @@ repositories, if you heavily tempered with the system, etc. you might want to
 **read the [Release Notes for Buster][relnotes]**. You might find the
 **chapters 4 and 5** as well as **appendix A** most important to read.
 
-[relnotes]: https://www.debian.org/releases/buster/amd64/release-notes/ch-information.en.html#openssh
+[relnotes]: https://www.debian.org/releases/buster/amd64/release-notes/index.en.html
 
 ## Preparations
 
