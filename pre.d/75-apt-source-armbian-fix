@@ -9,7 +9,7 @@ list="${THIS_APT_SOURCES_LIST_D}/armbian.list"
 if [ -f "${list}" ]
 then
 	mv -v ${list} ${list}.disabled
-	echo "deb http://apt.armbian.com buster main buster-utils" > ${list}
+	echo "deb http://apt.armbian.com ${THIS_DEBIAN_CODENAME_NEW} main ${THIS_DEBIAN_CODENAME_NEW}-utils" > ${list}
 fi
 
 exit 0
