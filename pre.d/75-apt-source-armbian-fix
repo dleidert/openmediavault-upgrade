@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+list="${THIS_APT_SOURCES_LIST_D}/armbian.list"
+
+if [ -f "${list}" ]
+then
+       mv -v ${list} ${list}.disabled
+       echo "deb http://apt.armbian.com ${THIS_DEBIAN_CODENAME_NEW} main ${THIS_DEBIAN_CODENAME_NEW}-utils" > ${list}
+fi
+
+exit 0
