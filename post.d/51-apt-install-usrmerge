@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# https://www.debian.org/releases/stable/amd64/release-notes/ch-whats-new.en.html#merged-usr
+
+set -e
+
+. $(dirname $(readlink -f "$0"))/../inc/localvars
+
+CONFLICTS="
+openmediavault-nut
+"
+
+CONFLICTS_removed=""
+
+for p in ${CONFLICTS}
+do
+	dpkg -l | awk '/^ii/ { print $2 }' | grep ${p} && CONFLICTS_removed="${p} ${CONFLICTS_removed}" && apt-get remove --yes ${p}
+done
+
+# https://www.debian.org/releases/stable/amd64/release-notes/ch-whats-new.en.html#merged-usr
+apt-get install ${THIS_APT_INSTALL_OPTIONS} usrmerge
+
+if [ -n "${CONFLICTS_removed}" ]
+then
+#	apt-get install ${THIS_APT_INSTALL_OPTIONS} ${CONFLICTS_removed}
+	echo "Removed '${CONFLICTS_removed}' because of file conflicts affecting the 'usrmerge' transition."
+fi
+
+exit 0

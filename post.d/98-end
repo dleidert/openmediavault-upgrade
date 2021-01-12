@@ -8,20 +8,28 @@ cat << EOF
 ******************************************************************************
 Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAME}) ..."
 
+The following packages don't appear in any of the available repositories
+anymore:
+
+------------------------------------------------------------------------------
+$(apt-show-versions | awk '/No available version/ {print $1 " " $2}')
+------------------------------------------------------------------------------
+
+Check carefully if you need them. Otherwise they can be removed.
+
 Make sure to clear your browser cache before reloading the web GUI!! Otherwise
 you might see this error:
 
         missing 'required' attribute 'enabled'
 
-Some services might need to be re-started. Please check the system state
-afterwards. E.g. check for failed units/services:
-
-	sudo systemctl list-units --failed
-
 You might also be presented a request to apply the changes to OMV. Just hit
 the <Apply> button
 
-Please restart your system now.
+Some services might need to a restart. Please restart your system now. Please
+check the system state afterwards. E.g. check for failed units/services:
+
+	sudo systemctl list-units --failed
+
 ******************************************************************************
 EOF
 
