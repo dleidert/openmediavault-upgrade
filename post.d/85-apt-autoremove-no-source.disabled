@@ -6,8 +6,6 @@ set -e
 
 currkern="linux-image-`uname -r`"
 
-apt-get install ${THIS_APT_UPGRADE_OPTIONS} apt-show-versions
-
 apt-show-versions | grep 'No available version' | awk -F: '{print $1}' | grep -xv -e ${currkern} | xargs apt-get autoremove --purge --yes
 
 exit 0
