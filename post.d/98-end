@@ -11,9 +11,7 @@ Successfully upgraded to ${OMV_UPGRADE_RELEASEVERSION} (${OMV_UPGRADE_RELEASENAM
 The following packages don't appear in any of the available repositories
 anymore:
 
-------------------------------------------------------------------------------
-$(apt-show-versions | awk '/No available version/ {print $1 " " $2}')
-------------------------------------------------------------------------------
+$(apt-show-versions | awk '/No available version/ {print "\t" $1 " " $2}')
 
 Check carefully if you need them. Otherwise they can be removed.
 
