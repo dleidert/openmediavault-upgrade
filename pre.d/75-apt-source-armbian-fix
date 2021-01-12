@@ -4,13 +4,13 @@ set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-for list in ${THIS_APT_SOURCES_LIST_D}/armbian.list
-do
-	if [ -f "${list}" ]
-	then
-		mv -v ${list} ${list}.disabled
-		echo "deb http://apt.armbian.com buster main buster-utils" > ${list}
-	fi
-done
+list="${THIS_APT_SOURCES_LIST_D}/armbian.list"
+backup="${THIS_APT_SOURCES_LIST_D}/armbian-${THIS_DEBIAN_CODENAME}.list"
+
+if [ -f "${list}" ]
+then
+	mv -v ${list} ${backup}
+	echo "deb http://apt.armbian.com buster main buster-utils" > ${list}
+fi
 
 exit 0
