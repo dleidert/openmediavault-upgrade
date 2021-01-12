@@ -1,11 +1,21 @@
 #!/bin/sh
+#
+# https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#reduced-lsb-support
 
 set -e
 
 . $(dirname $(readlink -f "$0"))/../inc/localvars
 
-# https://www.debian.org/releases/stretch/amd64/release-notes/ch-information.en.html#reduced-lsb-support
-apt-get install ${THIS_APT_INSTALL_OPTIONS} debconf-utils less libpam-systemd lsb-release
+PACKAGES="
+apt-show-versions
+debconf-utils
+less
+libpam-systemd
+lsb-release
+"
+
+apt-get install ${THIS_APT_INSTALL_OPTIONS} ${PACKAGES}
+
 apt-get install ${THIS_APT_INSTALL_OPTIONS} linux-image-4.19-${THIS_HOST_ARCH}
 
 exit 0
