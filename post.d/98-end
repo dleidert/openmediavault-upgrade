@@ -18,7 +18,7 @@ Check carefully if you need them. Otherwise they can be removed.
 Make sure to clear your browser cache before reloading the web GUI!! Otherwise
 you might see this error:
 
-        missing 'required' attribute 'enabled'
+	missing 'required' attribute 'enabled'
 
 You might also be presented a request to apply the changes to OMV. Just hit
 the <Apply> button
