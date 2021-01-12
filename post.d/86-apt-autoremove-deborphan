@@ -10,7 +10,7 @@ apt-get install ${THIS_APT_UPGRADE_OPTIONS} deborphan
 
 while [ -n "$(deborphan | grep -xv -e ${currkern})" ]
 do
-        deborphan | grep -xv -e ${currkern} | xargs apt-get autoremove --purge --yes
+	deborphan | grep -xv -e ${currkern} | xargs apt-get autoremove --purge --yes
 done
 
 exit 0
