@@ -2,17 +2,32 @@
 
 set -e
 
-SERVICES="
+# Services to be re-enabled are not necessary to be re-started. Docker
+# for example might need write access to the shares we rounted.
+SERVICES_RESTART="
 nginx
 php7.3-fpm
 ssh
 "
 
+# https://github.com/dleidert/openmediavault-upgrade/issues/18
+SERVICES_ENABLE="
+docker
+"
+
 ssh-keygen -A
 
-for s in ${SERVICE}
+# Services to be re-enabled are not necessary to be re-started. Docker for
+# example might need write access to the shares we remounted. So don't restart
+# the services mentioned in ${SERVICES_ENABLE}.
+for s in ${SERVICE_RESTART}
 do
-	service $s restart
+	systemctl restart $s
+done
+
+for s in ${SERVICES_ENABLE}
+do
+	test -n "$(systemctl list-units --all | grep ${s})" && systemctl enable ${s}
 done
 
 exit 0
