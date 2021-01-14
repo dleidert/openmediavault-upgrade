@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set  -e
+
+test -f "$(which systemctl)" || exit 0
+
+echo "***** /* Begin Unit List */ *****"
+systemctl list-units --full --no-pager
+echo "***** /* End Unit List */ *****"
+
+exit 0

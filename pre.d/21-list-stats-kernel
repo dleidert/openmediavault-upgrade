@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set  -e
+
+echo "***** /* Begin Kernel Version */ *****"
+uname -r
+echo "***** /* End Kernel Version */ *****"
+
+exit 0

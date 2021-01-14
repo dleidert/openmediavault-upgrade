@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set  -e
+
+ENVIRONMENT="
+COLORTERM
+LANG
+SHELL
+TERM
+"
+
+echo "***** /* Begin System Environment */ *****"
+for v in ${ENVIRONMENT}
+do
+	echo "${v}=$(printenv $v)"
+done
+echo "***** /* End System Environment */ *****"
+
+exit 0

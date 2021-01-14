@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set  -e
+
+echo "***** /* Begin Apt Policy */ *****"
+apt-cache policy
+echo "***** /* End Apt Policy */ *****"
+
+exit 0
