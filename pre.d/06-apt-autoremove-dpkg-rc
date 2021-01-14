@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+dpkg -l | awk '/^rc/ { print $2 }' | xargs apt-get autoremove --purge --yes
+
+exit 0
