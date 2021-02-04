@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set  -e
+
+test -f "$(which printenv)" || exit 0
+
+ENVIRONMENT="
+COLORTERM
+LANG
+SHELL
+TERM
+"
+
+echo "***** /* Begin System Environment */ *****"
+for v in ${ENVIRONMENT}
+do
+	echo "${v}=$(printenv $v)"
+done
+echo "***** /* End System Environment */ *****"
+
+exit 0
