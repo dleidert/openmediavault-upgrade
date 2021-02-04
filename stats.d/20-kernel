@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set  -e
+
+test -f "$(which uname)" || exit 0
+
+echo "***** /* Begin Kernel Version */ *****"
+uname -r
+echo "***** /* End Kernel Version */ *****"
+
+exit 0
