@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+boot="$(debconf-show grub-pc | awk '$2 == "grub-pc/install_devices:" {print $3}')"
+
+test -n "${boot}" || exit 0
+
+if [ ! -b "${boot}" ] ||
+   [ -z "$(dd bs=512 count=1 if=${boot} 2>/dev/null | strings | grep -w GRUB)" ]
+then
+	echo "The debconf database contains an entry for the device to install GRUB to,"
+	echo "which either doesn't exist, or doesn't contain an existing GRUB entry."
+	echo "To prevent you from being unable to boot your system the script will abort now."
+	echo "See https://bugs.debian.org/966575 for details."
+	echo
+	echo "Please run 'sudo dpkg-reconfigure -plow grub-pc' and select the correct device."
+	exit 1
+fi
+
+exit 0
