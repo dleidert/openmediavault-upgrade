@@ -2,6 +2,8 @@
 
 set  -e
 
+test -f "$(which printenv)" || exit 0
+
 ENVIRONMENT="
 COLORTERM
 LANG
