@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set  -e
+
+test -f "$(which apt-config)" || exit 0
+
+echo "***** /* Begin Apt Config */ *****"
+apt-config dump | sort -bf
+echo "***** /* End Apt Config */ *****"
+
+exit 0
