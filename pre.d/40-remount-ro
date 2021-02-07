@@ -23,6 +23,7 @@ then
 	do
 		# Test if share is mounted, otherwise do nothing for this share.
 		test -n "$(cat /proc/mounts | awk -v share=${d} '$2 == share { print $2 }')" || continue
+		test -w ${d} || continue
 		echo "Re-mounting ${d} read-only"
 		mount -v -o remount,ro $d
 	done
