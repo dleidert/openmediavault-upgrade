@@ -12,7 +12,7 @@ do
 	test -n "${dev}" || continue
 
 	if [ ! -b "${dev}" ] ||
-	   [ -z "$(dd bs=512 count=1 if=${dev} 2>/dev/null | strings | grep -w GRUB)" ]
+	   [ -z "$(dd bs=512 count=1 if=${dev} 2>/dev/null | hexdump -C | grep -w GRUB)" ]
 	then
 		echo "The debconf database contains an entry for the device to install GRUB to,"
 		echo "which either doesn't exist, or doesn't contain an existing GRUB entry:"
