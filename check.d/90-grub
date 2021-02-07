@@ -2,20 +2,29 @@
 
 set -e
 
-boot="$(debconf-show grub-pc | awk '$2 == "grub-pc/install_devices:" {print $3}')"
+boot="$(debconf-show grub-pc | grep -wi install_devices | awk -F: '{print $2}' | tr -d ',')"
 
-test -n "${boot}" || exit 0
+# if key is empty there is nothing to do
+test -n "${boot}" || exit 0 
 
-if [ ! -b "${boot}" ] ||
-   [ -z "$(dd bs=512 count=1 if=${boot} 2>/dev/null | strings | grep -w GRUB)" ]
-then
-	echo "The debconf database contains an entry for the device to install GRUB to,"
-	echo "which either doesn't exist, or doesn't contain an existing GRUB entry."
-	echo "To prevent you from being unable to boot your system the script will abort now."
-	echo "See https://bugs.debian.org/966575 for details."
-	echo
-	echo "Please run 'sudo dpkg-reconfigure -plow grub-pc' and select the correct device."
-	exit 1
-fi
+for dev in ${boot}
+do
+	test -n "${dev}" || continue
+
+	if [ ! -b "${dev}" ] ||
+	   [ -z "$(dd bs=512 count=1 if=${dev} 2>/dev/null | hexdump -C | grep -w GRUB)" ]
+	then
+		echo "The debconf database contains an entry for the device to install GRUB to,"
+		echo "which either doesn't exist, or doesn't contain an existing GRUB entry:"
+		echo
+		echo "The entry is: ${dev} ($(readlink -f ${dev}))"
+		echo
+		echo "To prevent you from being unable to boot your system the script will abort now."
+		echo "See https://bugs.debian.org/966575 for details."
+		echo
+		echo "Please run 'sudo dpkg-reconfigure -plow grub-pc' and select the correct device."
+		exit 1
+	fi
+done
 
 exit 0
