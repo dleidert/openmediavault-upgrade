@@ -17,7 +17,7 @@ do
 		echo "The debconf database contains an entry for the device to install GRUB to,"
 		echo "which either doesn't exist, or doesn't contain an existing GRUB entry:"
 		echo
-		echo "The entry is: ${dev}"
+		echo "The entry is: ${dev} ($(readlink -f ${dev}))"
 		echo
 		echo "To prevent you from being unable to boot your system the script will abort now."
 		echo "See https://bugs.debian.org/966575 for details."
