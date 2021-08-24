@@ -33,7 +33,7 @@ to use the [`screen`](https://packages.debian.org/screen) utility. Get it via:
 sudo apt-get install -y screen
 ```
 
-`screen` has the advantage that even if you loose the SSH connection - which
+`screen` has the advantage that even if you lose the SSH connection - which
 will close the running shell together with all scripts and programs started
 from this shell - you can always login again and re-attach to the running
 `screen` session.
@@ -127,7 +127,7 @@ rules by editing `/etc/default/chrony` and setting the `DAEMON_OPTS` back to:
 DAEMON_OPTS="-F -1"
 ```
 
-#### Weg GUI
+#### Web GUI
 
 When re-entering the web GUI of OMV you might be presented a request to apply
 your changes. Just follow the request.
