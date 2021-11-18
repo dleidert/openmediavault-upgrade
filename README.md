@@ -127,7 +127,7 @@ rules by editing `/etc/default/chrony` and setting the `DAEMON_OPTS` back to:
 DAEMON_OPTS="-F -1"
 ```
 
-#### Weg GUI
+#### Web GUI
 
 When re-entering the web GUI of OMV you might be presented a request to apply
 your changes. Just follow the request.
